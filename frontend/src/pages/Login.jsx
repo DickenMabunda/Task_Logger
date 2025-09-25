@@ -1,6 +1,11 @@
 import { useState } from "react"
 import axios from 'axios'
-import {Navigate } from "react-router-dom"
+import {Navigate, Link } from "react-router-dom"
+
+/* Icons imports */
+import { RiLockPasswordFill } from 'react-icons/ri';
+import { MdEmail } from 'react-icons/md';
+import { BiSolidLogInCircle } from 'react-icons/bi';
 
 function Login() {
     const [isLoading, setIsLoading] = useState(false);
@@ -43,29 +48,76 @@ function Login() {
     
 
   return (
-    <div>
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-            <label>email:</label><br/>
-            <input 
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            /><br />
-            <br/>
+    // <div>
+    //     <h2>Login</h2>
+    //     <form onSubmit={handleSubmit}>
+    //         <label>email:</label><br/>
+    //         <input 
+    //         type="email"
+    //         name="email"
+    //         value={formData.email}
+    //         onChange={handleChange}
+    //         /><br />
+    //         <br/>
 
-            <label>password:</label><br/>
-            <input 
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-            /><br />
-            <br/>
-            <button  disabled={isLoading} type="submit">Login</button>
-        </form>
-    </div>
+    //         <label>password:</label><br/>
+    //         <input 
+    //         type="password"
+    //         name="password"
+    //         value={formData.password}
+    //         onChange={handleChange}
+    //         /><br />
+    //         <br/>
+    //         <button  disabled={isLoading} type="submit">Login</button>
+    //     </form>
+    // </div>
+    <div className="loginContainer">
+            <form className="loginForm" onSubmit={handleSubmit}>
+                <div className="resizing-2">
+                    <BiSolidLogInCircle className="AiOutlineMail"/>
+                    <p className="title">Login</p>
+                    <p className="p-title">please login to your account</p>
+                </div>
+
+                <div className="inputGroup">
+                    <div className="resizing">
+                        <MdEmail className="AiOutlineMail"/>
+                        <label className="label" htmlFor="email">Email</label>                        
+                        </div>
+                    <input
+                        id="email"
+                        className="input"
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                    />
+                </div>
+
+                <div className="inputGroup">
+                    <div className="resizing">
+                        <RiLockPasswordFill className="AiOutlineMail"/>
+                    <label className="label" htmlFor="password">Password</label>
+                    </div>
+                    
+                    <input
+                        id="password"
+                        className="input"
+                        type="password"
+                        name="password"
+                        value={formData.password}
+                        onChange={handleChange}
+                        required
+                    />
+                    
+                </div>
+                <button className="button" disabled={isLoading} type="submit">
+                    {isLoading ? 'Logging in...' : 'Login'}
+                </button>
+                <p className="p-title-2">Don't have an account yet click <Link className='link' to='/register'>here</Link> to register</p>
+            </form>
+        </div>
   )
 }
 

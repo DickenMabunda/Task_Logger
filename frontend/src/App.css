@@ -7,14 +7,25 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
 }
-/* Navbar */
 
+body::-webkit-scrollbar {
+  display: none; 
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
 .navbar-div {
     display: flex;
     flex-direction: row;
     justify-content: end;
     width: 100%;
     height: 60px;
+    
     
 }
 
@@ -66,5 +77,121 @@
 .AiFillHome {
     padding-top: 4px;
     font-size: 18px;
+}
+
+/* Login.module.css */
+
+.resizing {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.AiOutlineMail {
+    font-size: 24px;
+    padding-bottom: 7px;
+}
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.loginForm {
+  background-color: #1a1a1a; /* Slightly lighter card background */
+  padding: 2.5rem;
+  border-radius: 8px;
+
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.title {
+  color: #FFFFFF;
+  margin-bottom: 2px;
+  font-size: 1.5rem;
+  letter-spacing: 1.2px;
+
+}
+.p-title {
+    margin-bottom: 10px;
+    font-size: 8px;
+}
+
+.p-title-2 {
+    font-size: 8px;
+    margin-top: 10px;
+}
+
+.inputGroup {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.label {
+  display: block;
+  color: #fffefe; /* Softer gray for labels */
+  margin-bottom: 0.5rem;
+  letter-spacing: 1.2px;
+}
+
+.input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #333;
+  color: #E0E0E0;
+  font-size: 1rem;
+  box-sizing: border-box; /* Ensures padding doesn't affect width */
+  height: 40px;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #1a1a1a; /* Highlight color on focus */
+}
+
+.button {
+  width: 100%;
+  padding: 0.9rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #333333; /* Primary action color */
+  color: #FFFFFF;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #1a1a1a; /* Darker shade on hover */
+}
+
+.button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+}
+
+/* Register.module.css */
+
+.registerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0; /* Add padding for scrollable view on small screens */
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+.registerForm {
+  padding: 2.5rem;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
 }
 
