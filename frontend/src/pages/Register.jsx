@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 /* My Fonts*/
 import { GiArchiveRegister } from 'react-icons/gi';
 import { MdOutlinePassword } from 'react-icons/md';
@@ -9,8 +9,9 @@ import { MdEmail } from 'react-icons/md';
 import { FaRegUserCircle } from 'react-icons/fa';
 
 export default function Register() {
+    const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
-    const [success, setSuccess]= useState(false);
+    const [success, setSuccess]= useState("false");
     const [formData, setFormData] = useState({
         username:'',
         email:'',
@@ -22,89 +23,45 @@ export default function Register() {
         setFormData({...formData, [e.target.name]:e.target.value})
     }
     
-    // const handleSubmit = async (e)=> {
-    //     e.preventDefault();
-        
-    //     try {
-    //         if (isLoading){
-    //         return
-    //         }
-    //     setIsLoading(true)
-    //         await axios.post('http://127.0.0.1:8000/api/register/', formData)
-    //         setSuccessMessage("Registration successful")
-    //         console.log(setSuccessMessage)
-    //         setSuccess(true)
-    //     }
-    //     catch(error) {
-    //         console.log('Error during registration!', error.response?.data)
-    //     }
-    //     finally {
-    //         setIsLoading(false)
-    //     }
-    // }
-    
     const handleSubmit = async (e)=> {
         e.preventDefault()
         try {
+            setIsLoading(true)
             const res = await axios.post("http://127.0.0.1:8000/api/register/", formData)
             if (res.status == "201") {
                 console.log("User created successfully with status: 201")
-
-                // Needs to be looked at //
+                setSuccess("true")
+            }
+            else {
+                setSuccess("false")
             }
         }
         catch(error) {
             console.log(error.response.data.username,error.response.data.email)
+            setIsLoading(false)
+            
+        }
+        finally {
+            setIsLoading(false)
+            console.log("process complete")
+             
         }
     }
+    if (success == "true") {
+        /* This method here seems to work better need to look at if i can use a useFfect hook to disable this error 
+        "Cannot update a component (`BrowserRouter`) while rendering a different component (`Register`). 
+        To locate the bad setState() call inside `Register`, follow the stack trace as described in 
+        https://react.dev/link/setstate-in-render" */
+        
+        setSuccess(false)
+        return navigate('/login')
+    }
+    
+    console.log(success)
 
   return (
-    // <div>
-        
-    //     <h2>Register:</h2>
-    //     <form >
-
-    //         <label>username:</label><br />
-    //         <input 
-    //         type='text' 
-    //         name='username' 
-    //         value={formData.username}
-    //         onChange={handleChange}
-    //         /><br />
-    //         <br />
-
-    //         <label>email:</label><br />
-    //         <input 
-    //         type='email'
-    //         name='email'
-    //         value={formData.email}
-    //         onChange={handleChange}
-    //         /><br />
-    //         <br />
-
-    //         <label>password:</label><br/>
-    //         <input
-    //         type='password'
-    //         name='password1'
-    //         value={formData.password1}
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <br/>
-
-    //         <label>comfirm password</label><br />
-    //         <input
-    //         type='password'
-    //         name='password2'
-    //         value={formData.password2}
-    //         onChange={handleChange}
-    //         /><br/>
-    //         <br />
-    //         <button type="submit" disabled={isLoading} onClick={handleSubmit}>Register</button>
-    //     </form>
-    // </div>
-
     <div className="registerContainer">
-            <form className="registerForm" onSubmit={handleSubmit}>
+            <form className="registerForm">
                  <div className="resizing-2">
                     <GiArchiveRegister className="AiOutlineMail"/>
                     <p className="title">Create Account</p>
@@ -178,7 +135,7 @@ export default function Register() {
                     />
                 </div>
 
-                <button className="button" type="submit" disabled={isLoading}>
+                <button onClick={handleSubmit}className="button" type="submit" disabled={isLoading}>
                     {isLoading ? 'Registering...' : 'Register'}
                 </button>
             </form>
