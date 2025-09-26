@@ -42,7 +42,7 @@ export default function Home() {
         
     }
   return (
-    <div>
+    <div className='home'>
 
         {isLoggedIn ? (
              <><h2>Hi, {username}. Welcome!!!</h2> <button onClick={handleLogout}>Logout</button></> ): <h2>Please login</h2>}        
