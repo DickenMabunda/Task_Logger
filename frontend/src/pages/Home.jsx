@@ -45,8 +45,10 @@ export default function Home() {
     <div className='home'>
 
         {isLoggedIn ? (
-             <><h2>Hi, {username}. Welcome!!!</h2> <button onClick={handleLogout}>Logout</button></> ): <h2>Please login</h2>}        
-        
+             <><h2>Hi, {username}. Welcome!!!</h2> <button onClick={handleLogout}> Logout  </button></> ): <h2>Please login</h2>}
+             <div className='h'>
+                <p>You have no tasks created yet !!!</p>
+             </div>
     </div>
   )
 }
