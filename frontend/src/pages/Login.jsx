@@ -8,6 +8,7 @@ import { MdEmail } from 'react-icons/md';
 import { BiSolidLogInCircle } from 'react-icons/bi';
 
 function Login() {
+
     const [isLoading, setIsLoading] = useState(false);
     const [successLogin, setSuccessLogin] = useState(false)
     const [formData, setFormData]= useState({
@@ -34,6 +35,7 @@ function Login() {
         }
         catch(error) {
             console.log('Error during Login!', error.response?.data)
+            window.alert('An error has occured please try again!')
         }
         finally {
             setIsLoading(false)
@@ -48,29 +50,6 @@ function Login() {
     
 
   return (
-    // <div>
-    //     <h2>Login</h2>
-    //     <form onSubmit={handleSubmit}>
-    //         <label>email:</label><br/>
-    //         <input 
-    //         type="email"
-    //         name="email"
-    //         value={formData.email}
-    //         onChange={handleChange}
-    //         /><br />
-    //         <br/>
-
-    //         <label>password:</label><br/>
-    //         <input 
-    //         type="password"
-    //         name="password"
-    //         value={formData.password}
-    //         onChange={handleChange}
-    //         /><br />
-    //         <br/>
-    //         <button  disabled={isLoading} type="submit">Login</button>
-    //     </form>
-    // </div>
     <div className="loginContainer">
             <form className="loginForm" onSubmit={handleSubmit}>
                 <div className="resizing-2">
@@ -117,7 +96,7 @@ function Login() {
                 </button>
                 <p className="p-title-2">Don't have an account yet click <Link className='link' to='/register'>here</Link> to register</p>
             </form>
-        </div>
+            </div>            
   )
 }
 

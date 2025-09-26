@@ -164,6 +164,7 @@ body::-webkit-scrollbar {
   font-weight: 700;
   cursor: pointer;
   transition: background-color 0.2s;
+
 }
 
 .button:hover {
@@ -197,7 +198,43 @@ body::-webkit-scrollbar {
 /* Home */
 
 .home {
-  border: 1px solid;
-  margin: 60px 50px 0px 50px;
-  height: 100vh;
+  margin: 300px 50px 0px 50px;
 }
+
+.home-div {
+    display: flex;
+    margin: auto;
+}
+
+.p-title-1 {
+  font-size: 20px;
+  margin: 10px;
+}
+
+.primary-message {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.sitask {
+  font-size: 3rem;
+  animation: spin 3s linear infinite;
+}
+
+.resizing-2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+} 
+
+/* have to adjust the home component */
