@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 /* My Fonts*/
@@ -22,6 +22,7 @@ export default function Register() {
     const handleChange = (e)=> {
         setFormData({...formData, [e.target.name]:e.target.value})
     }
+
     
     const handleSubmit = async (e)=> {
         e.preventDefault()
@@ -42,22 +43,20 @@ export default function Register() {
             
         }
         finally {
-            setIsLoading(false)
+            setIsLoading(false) // setting the button disabled regardless of the response 
             console.log("process complete")
-             
         }
     }
-    if (success == "true") {
-        /* This method here seems to work better need to look at if i can use a useFfect hook to disable this error 
-        "Cannot update a component (`BrowserRouter`) while rendering a different component (`Register`). 
-        To locate the bad setState() call inside `Register`, follow the stack trace as described in 
-        https://react.dev/link/setstate-in-render" */
-        
-        setSuccess(false)
-        return navigate('/login')
-    }
     
-    console.log(success)
+    
+    useEffect(()=> {
+        /* used the hook to check if the success variable changed so we can redirect to the login page */
+        console.log('useEffect ran ')
+        if (success == "true") {    
+            setSuccess(false)
+            return navigate('/login')
+        }
+    },[success])
 
   return (
     <div className="registerContainer">
