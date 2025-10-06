@@ -46,6 +46,21 @@ body::-webkit-scrollbar {
     margin: 22px auto 0 50px;
 }
 
+.FaRegUser {
+  padding-top: 4px;
+  font-size: 18px;
+}
+
+.FaRegUser:hover {
+  cursor: pointer;
+  color: #1a1a1a;
+  transition: 0.2s ease-in-out;
+}
+
+.user-tab:hover {
+  cursor: pointer;
+}
+
 .heading-title {
     font-size: 16px;  
     letter-spacing: 1px; 
@@ -229,12 +244,26 @@ body::-webkit-scrollbar {
 .sitask {
   font-size: 3rem;
   animation: spin 3s linear infinite;
+  background-color: #1a1a1a;
+  color: #1a1a1a;
+  margin-bottom: 20px;
 }
 
 .resizing-2 {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 } 
+
+.BiSolidLogInCircle {
+  font-size: 20px;
+  margin-top: 13px;
+}
+
+.resizing-3  {
+  display: flex;
+
+}
 
 /* have to adjust the home component */

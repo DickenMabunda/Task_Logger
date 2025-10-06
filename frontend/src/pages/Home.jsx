@@ -54,9 +54,9 @@ export default function Home() {
               <button onClick={handleLogout}> Logout </button></> ): <div className='primary-message'>
                 <SiTask className='sitask'/>
                 
-                <div className="resizing-2">
-                    <BiSolidLogInCircle className="AiOutlineMail" /> 
-                    <p className='p-title-1'>Please loginin to access or create your tasks</p>
+                <div className="resizing-3">
+                    <BiSolidLogInCircle className="BiSolidLogInCircle" /> 
+                    <p className='p-title-1'>Please login to access or create your tasks</p>
                      </div>
               </div>
               
