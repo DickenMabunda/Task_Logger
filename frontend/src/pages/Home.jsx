@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { SiTask } from 'react-icons/si';
 import { BiSolidLogInCircle } from 'react-icons/bi';
+import Task from './Task';
 export default function Home() {
     const [username, setUsername] = useState("")
     const [isLoggedIn, setLoggedIn] = useState(false)
@@ -51,6 +52,11 @@ export default function Home() {
              <div className='home-div'>
                 <p>You have no tasks created yet !!!</p>
              </div>
+
+             <div>
+                <Task />
+             </div>
+             
               <button onClick={handleLogout}> Logout </button></> ): <div className='primary-message'>
                 <SiTask className='sitask'/>
                 
