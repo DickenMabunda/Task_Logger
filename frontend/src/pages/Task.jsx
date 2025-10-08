@@ -30,7 +30,13 @@ function Task() {
                 </div>
 
                 <div>
-                    <button></button>
+
+                    <button className='btn-1'>Todo</button>
+
+                    <button className='btn-2'>In_progress</button>
+                    
+                    <button className='btn-3'>Done</button>
+
                 </div>
             
             </div>
