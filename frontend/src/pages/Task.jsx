@@ -1,48 +1,57 @@
 import React from 'react';
-import { useState } from 'react';
+import {useState} from 'react';
+import { FaCheckCircle, FaHourglassHalf, FaClipboardList } from 'react-icons/fa';
 
-function Task() {
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-  return (
-    <div>
-        <form>
+
+const Task = () => {
+    const [description, setDescription] = useState('');
+    const [dueDate, setDueDate] = useState('')
+    const [status, setStatus] = useState('')
+
+    return (
+     <div>
+        <h2>Create a new Task</h2>
+        <div>
+            <div>
+                <div><p>title</p></div>
+                <div>
+                    <ul>
+                        <li onClick={(e)=> setStatus('todo')}>Todo</li>
+                        <li onClick={(e)=> setStatus('in_progress')}>In_progress</li>
+                        <li onClick={(e)=> setStatus('Done')}>Done</li>
+                    </ul>
+                </div>
+            </div>
+
             <div>
                 <div>
-                    <label className='label' htmlFor='title'>Task Title:</label>
+                <p><FaCheckCircle />Description</p>
+                <input
+                type='text'
+                name='description'
+                value={description}
+                onChange={(e)=> setDescription(e.target.value)}
+                />
+                </div>
+
+                <div>
+                    <p>Due Date <FaHourglassHalf /></p>
                     <input
-                    type='text'
-                    name='title'
-                    value={title}
-                    onChange={e=> setTitle(e.eventPhase.target)}
-                    
+                    type='date'
+                    name='due_date'
+                    value={dueDate}
+                    onChange={(e)=> setDueDate(e.target.value)}
                     />
                 </div>
 
                 <div>
-                    <label htmlFor='description' className='label'>Description:</label>
-                    <input
-                    type='text'
-                    name='description'
-                    value={description}
-                    onChange={e => setDescription(e.target.value)}
-                    />
+                    <button className='btn-1'>Create</button>
+                    <button className='btn-2'>Discord</button>
                 </div>
-
-                <div>
-
-                    <button className='btn-1'>Todo</button>
-
-                    <button className='btn-2'>In_progress</button>
-                    
-                    <button className='btn-3'>Done</button>
-
-                </div>
-            
             </div>
-        </form>
-    </div>
-  )
+        </div>
+     </div>
+    )
 }
 
 export default Task
