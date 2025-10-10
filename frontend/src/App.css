@@ -267,3 +267,21 @@ body::-webkit-scrollbar {
 }
 
 /* have to adjust the home component */
+
+/* Task */
+
+.inactive {
+  list-style: none;
+  height: 20px;
+  width: 100px;
+  background-color: #e5e5e5;
+  color: #1a1a1a;
+  border-radius: 2px;
+  
+}
+
+.active {
+  background-color: #f0f0f0;
+  list-style: none;
+  color: #1a1a1a;
+}
