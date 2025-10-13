@@ -53,7 +53,7 @@ const Task = () => {
      <div>
         <h2>Create a new Task</h2>
         <div>
-            <div>
+            <div className='house-1'>
                 <div
                     ><p>title</p>
                     <input
@@ -65,7 +65,7 @@ const Task = () => {
                     />
                 </div>
                 <div>
-                    <ul>
+                    <ul className='inhouse-1'>
                         <li className={active1} onClick={handleClick1}>Todo</li>
                         <li className={active2} onClick={handleClick2}>In_progress</li>
                         <li className={active3} onClick={handleClick3}>Done</li>

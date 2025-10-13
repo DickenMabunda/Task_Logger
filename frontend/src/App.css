@@ -285,3 +285,21 @@ body::-webkit-scrollbar {
   list-style: none;
   color: #1a1a1a;
 }
+
+.house-1 {
+  border: 1px solid;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+.inhouse-1 {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  padding: 10px;
+}
+
+.inhouse-1 > li {
+  width: 70px;
+}
