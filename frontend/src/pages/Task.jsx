@@ -54,18 +54,19 @@ const Task = () => {
         <h2>Create a new Task</h2>
         <div>
             <div className='house-1'>
-                <div
-                    ><p>title</p>
+                <div className='inhouse-1'>
                     <input
                     className="input"
                     type='text'
+                    placeholder='Give your task a title'
+                    required
                     name='title'
                     value={title}
                     onChange={(e)=> setTitle(e.target.value)}
                     />
                 </div>
                 <div>
-                    <ul className='inhouse-1'>
+                    <ul className='inhouse-2'>
                         <li className={active1} onClick={handleClick1}>Todo</li>
                         <li className={active2} onClick={handleClick2}>In_progress</li>
                         <li className={active3} onClick={handleClick3}>Done</li>
@@ -73,11 +74,11 @@ const Task = () => {
                 </div>
             </div>
 
-            <div>
-                <div>
-                <p><FaCheckCircle />Description</p>
+            <div className=''>
+                <div className='inhouse-3'>
                 <input
                 className="input"
+                placeholder='Describe your task actions'
                 type='text'
                 name='description'
                 value={description}
@@ -85,8 +86,7 @@ const Task = () => {
                 />
                 </div>
 
-                <div>
-                    <p>Due Date <FaHourglassHalf /></p>
+                <div className='inhouse-4'>
                     <input
                     className="input"
                     type='date'

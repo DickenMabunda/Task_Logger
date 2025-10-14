@@ -163,6 +163,13 @@ body::-webkit-scrollbar {
   height: 40px;
 }
 
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.783);
+  letter-spacing: 1.2px;
+  font-size: 10px;
+  font-family: 'Roboto', sans-serif;
+}
+
 .input:focus {
   outline: none;
   border-color: #1a1a1a; /* Highlight color on focus */
@@ -274,32 +281,55 @@ body::-webkit-scrollbar {
   list-style: none;
   height: 20px;
   width: 100px;
-  background-color: #e5e5e5;
-  color: #1a1a1a;
-  border-radius: 2px;
+  background-color: #515050;
+  color: whitesmoke;
+  border-radius: 7px;
   
 }
 
 .active {
-  background-color: #f0f0f0;
+  background-color: #0E70AD;
   list-style: none;
-  color: #1a1a1a;
+  color: whitesmoke;
+  border-radius: 7px;
 }
 
 .house-1 {
-  border: 1px solid;
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+  
 }
 
 .inhouse-1 {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.inhouse-2 {
   display: flex;
   justify-content: space-around;
   margin: 10px;
-  padding: 10px;
+  
+  gap: 10px;
+  text-align: center;
 }
 
-.inhouse-1 > li {
-  width: 70px;
+.inhouse-2 > li {
+  width: 90px;
+  height: 40px;
+  padding-top: 15px;
+  letter-spacing: 1.2px;
 }
+
+.inhouse-3 {
+  margin: 10px 0px;
+}
+
+.inhouse-4 {
+  margin: 15px 0px;
+}
+
+.input[type='date']::-webkit-calendar {
+  background: transparent;
+}
+
