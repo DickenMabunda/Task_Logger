@@ -48,9 +48,12 @@ export default function Home() {
     <div className='home'>
 
         {isLoggedIn ? (
-             <><h2>Hi, {username}. Welcome!!!</h2>
-             <div className='home-div'>
-                <p>You have no tasks created yet !!!</p>
+             <>
+             <div className='home-house'>
+                <h2>Hi {username}. Welcome</h2>
+                <div className='home-div'>
+                    <p className='home-text'>You have no tasks created yet</p>
+                </div>
              </div>
 
              <div>

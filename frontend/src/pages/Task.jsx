@@ -1,5 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
+import { AiOutlineDelete } from 'react-icons/ai';
+import { HiOutlineCalendarDateRange } from 'react-icons/hi2';
 import { FaCheckCircle, FaHourglassHalf, FaClipboardList } from 'react-icons/fa';
 
 
@@ -50,7 +52,7 @@ const Task = () => {
 
 
     return (
-     <div>
+     <div className='Task'>
         <h2>Create a new Task</h2>
         <div>
             <div className='house-1'>
@@ -87,18 +89,29 @@ const Task = () => {
                 </div>
 
                 <div className='inhouse-4'>
-                    <input
-                    className="input"
-                    type='date'
-                    name='due_date'
-                    value={dueDate}
-                    onChange={(e)=> setDueDate(e.target.value)}
-                    />
+                    <div>
+
+                        <div>
+                            <p className='due-date'>Set your due Date</p>
+                            <HiOutlineCalendarDateRange className='HiOutlineCalendarDateRange' />
+                        </div>                       
+                        
+                    </div>
+                    <div className='dueDate'>
+                        <input
+                        className="input"
+                        type='date'
+                        name='due_date'
+                        value={dueDate}
+                        onChange={(e)=> setDueDate(e.target.value)}
+                        />
+                    </div>
+                    
                 </div>
 
-                <div>
+                <div className='house-btn'>
                     <button className='btn-1'>Create</button>
-                    <button className='btn-2'>Discord</button>
+                    <button className='btn-2'>Discard</button>
                 </div>
             </div>
         </div>

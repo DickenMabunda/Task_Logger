@@ -6,6 +6,7 @@ import { FaOpencart } from 'react-icons/fa';
 import { FaBook } from 'react-icons/fa';
 import { FaRegUser } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
+import { RiMenuFoldFill } from 'react-icons/ri';
 import axios from 'axios';
 
 
@@ -42,6 +43,9 @@ function Layout() {
                 <li className='user-tab'>
                    {username}  <span><FaRegUser className='FaRegUser' /></span>
                 </li>
+                <li className='user-tab'>
+                     <span><RiMenuFoldFill className='RiMenuFoldFill'/></span>
+                </li>
 
             </ul>
             </div>) : (<div className='navbar-div'>
@@ -62,9 +66,13 @@ function Layout() {
                 <li>
                     <Link className='link'to='/register'><span><FaOpencart className='AiFillHome' /></span> Register</Link>
                 </li>
-            </ul>
+            </ul>'
+            
             </div>)}
         </nav>
+        <div className='drop-down-menu'>
+                <p>Logout dsdsfsdfsdfsdfdssdfsdfsdf</p>
+            </div>
     </div>
   )
 }
