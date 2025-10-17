@@ -7,13 +7,28 @@ import { FaBook } from 'react-icons/fa';
 import { FaRegUser } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 import { RiMenuFoldFill } from 'react-icons/ri';
+import { LuContact } from 'react-icons/lu';
+import { AiOutlineLogout } from 'react-icons/ai';
 import axios from 'axios';
 
 
 function Layout() {
     const [isLoggedIn, setLoggedIn]= useState(false);
     const [username, setUsername] = useState("");
+    const [show, setShow] = useState(false)
     const access = localStorage.getItem('access_token');
+    
+
+    const handleDropDownMenu = (e)=> {
+        if (show == false) {
+            setShow(true)
+            console.log('show is open')
+        }
+        else {
+            setShow(false)
+            console.log('show is closed')
+        }
+    }
 
     useEffect(()=> {
         const checkLoggedInUser = async () => {
@@ -70,9 +85,13 @@ function Layout() {
             
             </div>)}
         </nav>
-        <div className='drop-down-menu'>
-                <p>Logout dsdsfsdfsdfsdfdssdfsdfsdf</p>
-            </div>
+        {show? (<div className='drop-down-menu' onClick={handleDropDownMenu}>
+                <ul className='drop-down-list'>
+                    <li className='drop-down-list-item'><FaRegUser/> Manage Profile</li>
+                    <li className='drop-down-list-item'><LuContact/> Contact</li>
+                    <li className='drop-down-list-item'> <AiOutlineLogout/> Logout</li>
+                </ul> 
+        </div>): ''}
     </div>
   )
 }

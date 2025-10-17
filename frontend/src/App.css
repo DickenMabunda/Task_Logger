@@ -18,17 +18,29 @@ body::-webkit-scrollbar {
   top: 0;
   width: 100%;
   z-index: 1;
-  border: 1px solid;
+  
 }
 
 .drop-down-menu {
-  border: 1px solid;
-  top: 40px;
+  top: 30px;
   left: auto;
-  right: 0;
+  right: 50px;
   margin: 10px 0 10px 0;
   z-index: 2;
   position: fixed;
+  width: 130px;
+}
+
+.drop-down-list {
+  list-style: none;
+}
+
+.drop-down-list-item {
+  
+  width: 100%;
+  text-align: end;
+  letter-spacing: 1.2px;
+  margin-top: 5px;
 }
 
 .navbar-div {
