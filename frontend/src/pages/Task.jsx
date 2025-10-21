@@ -1,8 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
-import { AiOutlineDelete } from 'react-icons/ai';
 import { HiOutlineCalendarDateRange } from 'react-icons/hi2';
-import { FaCheckCircle, FaHourglassHalf, FaClipboardList } from 'react-icons/fa';
+
 
 
 const Task = () => {

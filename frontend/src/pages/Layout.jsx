@@ -20,13 +20,18 @@ function Layout() {
     
 
     const handleDropDownMenu = (e)=> {
-        if (show == false) {
-            setShow(true)
-            console.log('show is open')
+        if (isLoggedIn == true) {
+            if (show == false) {
+                setShow(true)
+                console.log('show is open')
+            }
+            else {
+                setShow(false)
+                console.log('show is closed')
+            }
         }
         else {
             setShow(false)
-            console.log('show is closed')
         }
     }
 
@@ -38,12 +43,15 @@ function Layout() {
                 Authorization : "Bearer " + access
             }
         })
-        setLoggedIn(true)
+        // This two functions i need to move them to the task component so that i can pass in the states as props
+        // and treat the Layout component as the parent hopefully this will work...
         setUsername(response.data.username)
+        setLoggedIn(true)
+        console.log(isLoggedIn)
         }
         checkLoggedInUser();
-        console.log(isLoggedIn)
     },[])
+    // Need to fix the navbar when logging in and out
 
   return (
     <div>
@@ -58,7 +66,7 @@ function Layout() {
                 <li className='user-tab'>
                    {username}  <span><FaRegUser className='FaRegUser' /></span>
                 </li>
-                <li className='user-tab'>
+                <li className='user-tab' onClick={handleDropDownMenu}>
                      <span><RiMenuFoldFill className='RiMenuFoldFill'/></span>
                 </li>
 
@@ -85,7 +93,7 @@ function Layout() {
             
             </div>)}
         </nav>
-        {show? (<div className='drop-down-menu' onClick={handleDropDownMenu}>
+        {show? (<div className='drop-down-menu'>
                 <ul className='drop-down-list'>
                     <li className='drop-down-list-item'><FaRegUser/> Manage Profile</li>
                     <li className='drop-down-list-item'><LuContact/> Contact</li>

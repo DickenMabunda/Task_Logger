@@ -29,6 +29,7 @@ body::-webkit-scrollbar {
   z-index: 2;
   position: fixed;
   width: 130px;
+  transition: 0.2s ease-in-out;
 }
 
 .drop-down-list {
