@@ -4,10 +4,14 @@ import axios from 'axios';
 import { SiTask } from 'react-icons/si';
 import { BiSolidLogInCircle } from 'react-icons/bi';
 import Task from './Task';
-export default function Home() {
+
+
+export default function Home({userLoggedIn, setUserLogin}) {
     const [username, setUsername] = useState("")
     const [isLoggedIn, setLoggedIn] = useState(false)
      const access = localStorage.getItem('access_token')
+
+     console.log('state in the Home compoent:',userLoggedIn)
      
     useEffect(()=> {
         const checkLoggedInUser = async () => {
@@ -17,7 +21,7 @@ export default function Home() {
                 Authorization : "Bearer " + access
             }
         })
-        setLoggedIn(true)
+        setUserLogin(true)
         setUsername(response.data.username)
         
         }
@@ -37,7 +41,7 @@ export default function Home() {
             console.log(res.data.message)
             localStorage.removeItem("access_token")
             localStorage.removeItem("refresh_token")
-            setLoggedIn(false)        
+            setUserLogin(false)        
         }
         catch(error) {
             console.log(error)
@@ -47,7 +51,7 @@ export default function Home() {
   return (
     <div className='home'>
 
-        {isLoggedIn ? (
+        {userLoggedIn ? (
              <>
              <div className='home-house'>
                 <h2>Hi {username}. Welcome</h2>

@@ -12,7 +12,7 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import axios from 'axios';
 
 
-function Layout() {
+function Layout({userLoggedIn, setUserLogin}) {
     const [isLoggedIn, setLoggedIn]= useState(false);
     const [username, setUsername] = useState("");
     const [show, setShow] = useState(false)
@@ -20,7 +20,7 @@ function Layout() {
     
 
     const handleDropDownMenu = (e)=> {
-        if (isLoggedIn == true) {
+        if (userLoggedIn == true) {
             if (show == false) {
                 setShow(true)
                 console.log('show is open')
@@ -46,8 +46,8 @@ function Layout() {
         // This two functions i need to move them to the task component so that i can pass in the states as props
         // and treat the Layout component as the parent hopefully this will work...
         setUsername(response.data.username)
-        setLoggedIn(true)
-        console.log(isLoggedIn)
+        setUserLogin(true)
+        console.log('userLoggedIn in state in the Layout component:', userLoggedIn)
         }
         checkLoggedInUser();
     },[])
@@ -56,7 +56,7 @@ function Layout() {
   return (
     <div>
         <nav className='navbar'>
-            {isLoggedIn ? (<div className='navbar-div'>
+            {userLoggedIn ? (<div className='navbar-div'>
                 <div className='heading'>
                     <span className='FaBook'><FaBook /></span> 
                     <h1 className='heading-title'>Taskify</h1>

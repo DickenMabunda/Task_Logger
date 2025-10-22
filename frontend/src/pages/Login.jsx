@@ -7,7 +7,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { MdEmail } from 'react-icons/md';
 import { BiSolidLogInCircle } from 'react-icons/bi';
 
-function Login() {
+function Login({userLoggedIn, setUserLogin}) {
 
     const [isLoading, setIsLoading] = useState(false);
     const [successLogin, setSuccessLogin] = useState(false)
