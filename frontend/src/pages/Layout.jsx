@@ -95,7 +95,7 @@ function Layout({userLoggedIn, setUserLogin}) {
         </nav>
         {show? (<div className='drop-down-menu'>
                 <ul className='drop-down-list'>
-                    <li className='drop-down-list-item'><FaRegUser/> Manage Profile</li>
+                    <li className='drop-down-list-item'><FaRegUser/><Link className='link' to='/manage-profile'> Manage Profile</Link></li>
                     <li className='drop-down-list-item'><LuContact/> Contact</li>
                     <li className='drop-down-list-item'> <AiOutlineLogout/> Logout</li>
                 </ul> 

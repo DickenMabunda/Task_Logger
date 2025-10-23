@@ -420,3 +420,11 @@ body::-webkit-scrollbar {
   width: 80%;
   margin: 0 auto;
 }
+
+
+/* manage-profile */
+
+.manage-profile {
+  margin: 150px auto;
+  width: 80%;
+}
