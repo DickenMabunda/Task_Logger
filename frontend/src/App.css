@@ -421,5 +421,16 @@ body::-webkit-scrollbar {
 .Task {
   width: 80%;
   margin: 0 auto;
+<<<<<<< HEAD
   margin-top: 50px;
+=======
+}
+
+
+/* manage-profile */
+
+.manage-profile {
+  margin: 150px auto;
+  width: 80%;
+>>>>>>> 4b8dde724a71164175fb5c68c02fb6121719a733
 }
