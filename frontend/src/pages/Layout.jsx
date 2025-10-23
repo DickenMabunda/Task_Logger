@@ -35,6 +35,27 @@ function Layout({userLoggedIn, setUserLogin}) {
         }
     }
 
+    const handleLogout = async ()=> {
+        try {
+            const refresh_token = localStorage.getItem("refresh_token")
+            const access_token = localStorage.getItem("access_token")
+            console.log("refresh_token",refresh_token + "/bn", "access_token :", access_token)
+            const res = await axios.post("http://127.0.0.1:8000/api/logout/", {refresh: refresh_token }, {
+                headers : {
+                    Authorization : "Bearer " + access_token
+                }
+            })
+            console.log(res.data.message)
+            localStorage.removeItem("access_token")
+            localStorage.removeItem("refresh_token")
+            setUserLogin(false)        
+        }
+        catch(error) {
+            console.log(error)
+        }
+        
+    }
+
     useEffect(()=> {
         const checkLoggedInUser = async () => {
 
@@ -97,7 +118,7 @@ function Layout({userLoggedIn, setUserLogin}) {
                 <ul className='drop-down-list'>
                     <li className='drop-down-list-item'><FaRegUser/> Manage Profile</li>
                     <li className='drop-down-list-item'><LuContact/> Contact</li>
-                    <li className='drop-down-list-item'> <AiOutlineLogout/> Logout</li>
+                    <li className='drop-down-list-item' onClick={handleLogout}><AiOutlineLogout/> Logout</li>
                 </ul> 
         </div>): ''}
     </div>
