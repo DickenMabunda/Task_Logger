@@ -5,7 +5,7 @@ const ManageProfile = ()=> {
     const access = localStorage.getItem('access_token');
     // Need to move the access token import on the parent component,
     // Cant be importing it on every child component, this is not efficient.
-
+    console.log(access)
     useEffect(()=> {
 
         const UserDetails = async ()=> {
@@ -14,7 +14,9 @@ const ManageProfile = ()=> {
                     Authorization: 'Bearer ' + access
                 }
             })
+            console.log(response.data)            
         }
+        UserDetails();
     })
 
     return (<div className='manage-profile'>
