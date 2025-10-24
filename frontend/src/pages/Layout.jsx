@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { AiFillHome } from 'react-icons/ai';
 import { AiOutlineLogin } from 'react-icons/ai';
 import { FaOpencart } from 'react-icons/fa';
@@ -12,9 +12,8 @@ import { AiOutlineLogout } from 'react-icons/ai';
 import axios from 'axios';
 
 
-function Layout({userLoggedIn, setUserLogin}) {
+function Layout({userLoggedIn, setUserLogin, username, setUsername}) {
     const [isLoggedIn, setLoggedIn]= useState(false);
-    const [username, setUsername] = useState("");
     const [show, setShow] = useState(false)
     const access = localStorage.getItem('access_token');
     
@@ -48,7 +47,10 @@ function Layout({userLoggedIn, setUserLogin}) {
             console.log(res.data.message)
             localStorage.removeItem("access_token")
             localStorage.removeItem("refresh_token")
-            setUserLogin(false)        
+            setUserLogin(false)
+            setShow(false)
+            setUsername('')
+            return <Navigate to='/'/>    
         }
         catch(error) {
             console.log(error)
@@ -64,53 +66,41 @@ function Layout({userLoggedIn, setUserLogin}) {
                 Authorization : "Bearer " + access
             }
         })
-        // This two functions i need to move them to the task component so that i can pass in the states as props
-        // and treat the Layout component as the parent hopefully this will work...
         setUsername(response.data.username)
         setUserLogin(true)
         console.log('userLoggedIn in state in the Layout component:', userLoggedIn)
         }
         checkLoggedInUser();
     },[])
-    // Need to fix the navbar when logging in and out
 
   return (
     <div>
         <nav className='navbar'>
             {userLoggedIn ? (<div className='navbar-div'>
                 <div className='heading'>
+                    
                     <span className='FaBook'><FaBook /></span> 
+                    <Link to='/' className='link'>
                     <h1 className='heading-title'>Taskify</h1>
+                    </Link>
                 </div>
             <ul className='navbar-list'>
             
-                <li className='user-tab'>
-                   {username}  <span><FaRegUser className='FaRegUser' /></span>
-                </li>
-                <li className='user-tab' onClick={handleDropDownMenu}>
-                     <span><RiMenuFoldFill className='RiMenuFoldFill'/></span>
-                </li>
-
+                <li className='user-tab'><label style={{fontSize: "13px"}}>{username}</label><span><FaRegUser className='FaRegUser' /></span></li>
+                <li><Link className='link' to='/'><span><AiFillHome className='AiFillHome' /></span></Link></li>
+                <li className='user-tab' onClick={handleDropDownMenu}><span><RiMenuFoldFill className='RiMenuFoldFill'/></span></li>
             </ul>
             </div>) : (<div className='navbar-div'>
                 <div className='heading'>
                     <span className='FaBook'><FaBook /></span> 
                     <h1 className='heading-title'>Taskify</h1>
                 </div>
+
             <ul className='navbar-list'>
-                <li>
-                    
-                    <Link className='link' to='/'><span><AiFillHome className='AiFillHome' /></span> Home</Link>
-                </li>
-
-                <li>
-                    <Link className='link' to='/login'><span><AiOutlineLogin className='AiFillHome' /></span> Login</Link>
-                </li>
-
-                <li>
-                    <Link className='link'to='/register'><span><FaOpencart className='AiFillHome' /></span> Register</Link>
-                </li>
-            </ul>'
+                <li><Link className='link' to='/'><span><AiFillHome className='AiFillHome' /></span> Home</Link></li>
+                <li><Link className='link' to='/login'><span><AiOutlineLogin className='AiFillHome' /></span> Login</Link></li>
+                <li><Link className='link'to='/register'><span><FaOpencart className='AiFillHome' /></span> Register</Link></li>
+            </ul>
             
             </div>)}
         </nav>
